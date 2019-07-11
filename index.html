@@ -5,24 +5,63 @@
 </head>
 <body>
   <script>
+      let result = "";
+      let computerScore = 0;
+      let yourScore = 0;
+
       function computerPlay() {
         let number = Math.random()*3;
         let choice;
         if (number <= 1){
-            choice = "Scissors";
+            choice = "scissors";
         } else if (number > 1 && number <= 2) {
-            choice = "Rock";
+            choice = "rock";
         } else if (number > 2 && number <= 3) {
-            choice = "Paper";
+            choice = "paper";
         }
         return choice;
       }
       function playRound (playerSelection, computerSelection) {
-          
-      }
-
-      function game () {
-
+        if ((playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "paper" && computerSelection == "rock")) {
+            result = "you win";
+            console.log(`You win, your choice of ${playerSelection} beats computer's choice of ${computerSelection}!`);
+        } else if ((playerSelection == "rock" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "rock")) {
+            result = "computer wins";
+            console.log(`You lose, your choice of ${playerSelection} loses to computer's choice of ${computerSelection}!`);
+        } else {
+            result = "tie";
+            console.log(`It's a tie, you chose ${playerSelection} and the computer chose ${computerSelection}`)
+        }
+        return result;
+       }
+       function keepScore() {
+           if (result === "you win") {
+               yourScore+=1;
+           } else if (result === "computer wins") {
+               computerScore+=1;
+           }
+        }
+       function game () {
+          let playerChoice = prompt("Scissors, rock, or paper?").toLowerCase().trim();
+          playRound(playerChoice, computerPlay());
+          keepScore();
+          console.log(`Your score ${yourScore} VS Computer's Score ${computerScore}`);
+          playerChoice = prompt("Scissors, rock, or paper?").toLowerCase().trim();
+          playRound(playerChoice, computerPlay());
+          keepScore();
+          console.log(`Your score ${yourScore} VS Computer's Score ${computerScore}`);
+          playerChoice = prompt("Scissors, rock, or paper?").toLowerCase().trim();
+          playRound(playerChoice, computerPlay());
+          keepScore();
+          console.log(`Your score ${yourScore} VS Computer's Score ${computerScore}`);
+          playerChoice = prompt("Scissors, rock, or paper?").toLowerCase().trim();
+          playRound(playerChoice, computerPlay());
+          keepScore();
+          console.log(`Your score ${yourScore} VS Computer's Score ${computerScore}`);
+          playerChoice = prompt("Scissors, rock, or paper?").toLowerCase().trim();
+          playRound(playerChoice, computerPlay());
+          keepScore();
+          console.log(`Your score ${yourScore} VS Computer's Score ${computerScore}`);
       }
   </script>
 </body>
