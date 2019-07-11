@@ -6,15 +6,23 @@
 <body>
   <script>
       function computerPlay() {
-
+        let number = Math.random()*3;
+        let choice;
+        if (number <= 1){
+            choice = "Scissors";
+        } else if (number > 1 && number <= 2) {
+            choice = "Rock";
+        } else if (number > 2 && number <= 3) {
+            choice = "Paper";
+        }
+        return choice;
       }
-
       function playRound (playerSelection, computerSelection) {
-
+          
       }
 
       function game () {
-          
+
       }
   </script>
 </body>
